@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<img alt="Error"  src="data:image/jpeg;base64,${image}" >
+<button type="button" th:onclick="|window.location.href='/JSON'|" >To json</button>
+<button type="button" th:onclick="|window.location.href='/test'|">Test</button>
+
+</body>
+</html>
