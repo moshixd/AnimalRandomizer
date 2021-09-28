@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>document.addEventListener("DOMContentLoaded", function() {
+    // sätter clickevent på knappen som ska generera random bild.
+        const button = document.getElementById("dog-button");
+
+        button.addEventListener("click", () => {
+            let request = new Request('/generateRandomDog');
+            // gör en fetch mot generateRadomDog endpoint.
+
+            fetch(request)
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(function(response) {
+                    // sätter img-taggens src till fetch responsens objektet image data.
+                    let imageElement = document.getElementById("image");
+                    let imageNameElement = document.getElementById("image-name");
+                    let infoElement = document.getElementById("info");
+                    let counterElement = document.getElementById("counter");
+
+                    imageElement.src = response.imageUrl;
+                    imageNameElement.innerHTML = response.imageName;
+                    infoElement.innerHTML = response.info;
+                    counterElement.innerHTML = response.counter;
+                });
+        })
+    })</script>
+</head>
+    <body>
+        <div>
+            <button id="dog-button" type="button">Click Me</button>
+        </div>
+        <div>
+            <img id="image" style="width: 350px; height: 500px" />
+            <h2 id="image-name"></h2>
+            <p id="info"></p>
+            <p>Number of clicks: <span id="counter"></span></p>
+        </div>
+    </body>
+</html>
