@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    int clicks = 0;
+    function click() {
+        clicks += 1;
+        document.getElementById("clicks").innerHTML = clicks;
+    };
+    </script>
+
+<h1>Hej</h1>
+<button type="button" onClick="click()" , th:onclick="|window.location.href='/api/v1/student'|">Click me</button>
+
+<p>Clicks: <a id="clicks">0</a></p>-->
+
+</body>
+</html>
